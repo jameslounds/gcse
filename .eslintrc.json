@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-console": "off",
+        "no-unused-vars": "off",
+        "linebreak-style": "off"
+    },
+    "plugins": [
+        "react"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "parser": "babel-eslint"
+}
