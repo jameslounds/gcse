@@ -9,18 +9,28 @@ const knex = require("knex")({
     useNullAsDefault: true
 });
 
-function saveScore(username, score, subject) {
-    return getUid(username)
-        //find out user's id
-        .then(uid => {
-            //insert the score into the db with their corresponding uid
-            return knex("results").insert({
-                uid: uid,
-                score: score,
-                test: subject
-            });
-        })
-        .catch(console.error);
+function saveScore(id, score) {
+    //get current time as a unix timestamp
+    const now = Math.round((new Date()).getTime() / 1000);
+
+    //put results in database
+    return knex("results")
+        .insert({
+            uid: id,
+            score: score,
+            time: now
+        }).then(response => {
+             if (response) {
+                return {
+                    success: true
+                };
+            } else {
+                return {
+                    success: false,
+                    reason: "database error"
+                };
+            }
+        });
 }
 
 function getUid(username) {

@@ -6,9 +6,9 @@ import Back from "./Back.jsx";
 export default class Card extends Component {
   constructor(props) {
     super(props);
-    this.state = { rotationY: 180, width: 0, height: 0 };
+    this.state = { rotationY: 0, width: 250, height: 350 };
     this.clickable = true;
-    this.enlarge(100);
+    //this.enlarge(100);
   }
 
   // put back in when dealing animation is done, atm will just flip cards back over to black

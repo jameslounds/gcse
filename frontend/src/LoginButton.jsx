@@ -21,13 +21,20 @@ export default class LoginButton extends Component {
         >
           Login To Save Your Score
         </button>
-        
+        <div className="modal" id="login">
           {this.state.login ? (
-            <Login changeMode={() => this.changeMode()} />
+            <Login
+              changeMode={() => this.changeMode()}
+              loggedIn={() => this.props.loggedIn()}
+            />
           ) : (
-            <Register changeMode={() => this.changeMode()} />
+            <Register
+              changeMode={() => this.changeMode()}
+              loggedIn={() => this.props.loggedIn()}
+            />
           )}
         </div>
+      </div>
     );
   }
 

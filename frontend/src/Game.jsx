@@ -67,6 +67,12 @@ export default class Game extends Component {
             <button onClick={() => this.redeal()} className="btn align-bottom">
               Re-deal
             </button>
+            <button
+              onClick={() => this.gameOver()}
+              className="btn align-bottom"
+            >
+              Finish
+            </button>
           </div>
           <div className="col-md-5">
             <Card

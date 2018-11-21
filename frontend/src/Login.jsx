@@ -11,67 +11,65 @@ export default class Login extends Component {
   render() {
     console.log(this.state.reason);
     return (
-      <div className="modal" id="login">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h4 className="modal-title">
-                {this.state.login ? "Login" : "Register"}
-              </h4>
-              <button type="button" className="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h4 className="modal-title">
+              {this.state.login ? "Login" : "Register"}
+            </h4>
+            <button type="button" className="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
 
-            <div className="modal-body">
-              <form onSubmit={e => this.handleSubmit(e)}>
-                <div className="form-group">
-                  <label>Username</label>
-                  <input
-                    id="username"
-                    type="text"
-                    className="form-control"
-                    placeholder="Username"
-                    name="username"
-                  />
-                  {this.state.reason === "username" ? (
-                    <div className="invalid-feedback">
-                      Sorry, that user doesn't seem to exist. Please try again.
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
+          <div className="modal-body">
+            <form onSubmit={e => this.handleSubmit(e)}>
+              <div className="form-group">
+                <label>Username</label>
+                <input
+                  id="username"
+                  type="text"
+                  className="form-control"
+                  placeholder="Username"
+                  name="username"
+                />
+                {this.state.reason === "username" ? (
+                  <div className="invalid-feedback">
+                    Sorry, that user doesn't seem to exist. Please try again.
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
 
-                <div className="form-group">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    name="password"
-                    id="password"
-                  />
-                  {this.state.reason === "password" ? (
-                    <div className="invalid-feedback">
-                      Sorry, that password's wrong. Please try again.
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  name="password"
+                  id="password"
+                />
+                {this.state.reason === "password" ? (
+                  <div className="invalid-feedback">
+                    Sorry, that password's wrong. Please try again.
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
 
-                <button className="btn btn-primary">Submit</button>
-              </form>
-            </div>
-            <div className="modal-footer">
-              <p className="text-justify">
-                Already made an account?{" "}
-                <a onClick={() => this.props.changeMode()} href="#register">
-                  Register
-                </a>
-              </p>
-            </div>
+              <button className="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div className="modal-footer">
+            <p className="text-justify">
+              Already made an account?{" "}
+              <a onClick={() => this.props.changeMode()} href="#register">
+                Register
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -120,6 +118,7 @@ export default class Login extends Component {
           const target = document.getElementById(data.reason);
           target.classList.add("is-invalid");
         } else {
+          this.props.loggedIn();
           console.log("login successful");
         }
       });

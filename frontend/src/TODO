@@ -1,4 +1,4 @@
-Handle response from login 
+DONE Handle response from login 
 DONE Make registration work
-Send the scores
-Cookies
+DONE Send the scores
+Don't bother showing login modal if valid jwt present

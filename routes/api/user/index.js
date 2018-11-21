@@ -37,11 +37,16 @@ router.post("/login", async (req, res) => {
     console.log(loginAttempt);
     console.log(`old jwt: ${req.cookies.jwt}`);
 
+    const uid = await getUid(req.body.username);
+
+    console.log(uid);
+    console.log(req.jwt.uid);
+
     //if they are a valid user and we haven't already, let's set a cookie so we can remember them
+    //or if they have just logged in with a different user
     if (loginAttempt.success) {
-        if (!req.cookies.jwt) {
+        if (!req.cookies.jwt || req.jwt.uid !== uid) {
             const sid = sidGen.create();
-            const uid = await getUid(req.body.username);
             const myjwt = cookieSetter.sign({
                     sid: sid,
                     uid: uid

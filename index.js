@@ -38,21 +38,6 @@ app.use(
 
 app.use("/api", require("./routes/api"));
 
-app.post("/api/score/send", (req, res) => {
-    const username = req.body.username;
-    const score = req.body.score;
-    const subject = req.body.subject;
-
-    console.log(score);
-
-    return saveScore(username, score, subject).then(success =>
-        res.json({
-            success: success
-        })
-    );
-});
-
-
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
