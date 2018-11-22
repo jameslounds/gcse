@@ -46,7 +46,7 @@ export default class Content extends Component {
 
   render() {
     if (this.state.gameOver) {
-      return <GameOver />;
+      return <GameOver username={this.props.username} />;
     } else {
       return (
         <Game

@@ -1,4 +1,6 @@
 DONE Handle response from login 
 DONE Make registration work
 DONE Send the scores
-Don't bother showing login modal if valid jwt present
+DONE Don't bother showing login modal if valid jwt present
+Add logout button
+Don't just leave loading gif up if no username recieved

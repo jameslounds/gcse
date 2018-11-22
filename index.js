@@ -5,8 +5,6 @@ const {
 const express = require("express");
 const app = express();
 
-app.use("/gcse", express.static("./frontend/build"));
-
 const morgan = require("morgan");
 app.use(morgan("combined"));
 
@@ -35,6 +33,8 @@ app.use(
         getToken: req => req.cookies.jwt
     })
 );
+
+app.use("/gcse", express.static("./frontend/build"));
 
 app.use("/api", require("./routes/api"));
 

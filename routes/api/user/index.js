@@ -14,17 +14,15 @@ const {
 } = require("../../../login.js");
 
 router.get("/me", async (req, res) => {
-
-    let username = await getUsername("1");
     if (!req.jwt) {
         return res.json({
-            username: username
+            error: "invalid jwt"
         });
     }
+    const uid = req.jwt.uid;
 
-    console.log(`uid: ${req.jwt.uid}`);
-    username = await getUsername(req.jwt.uid);
-    console.log(username);
+    const username = await getUsername(uid);
+
     return res.json({
         username: username
     });
@@ -35,12 +33,8 @@ router.post("/login", async (req, res) => {
     const loginAttempt = await verifyUser(req.body.username, req.body.password);
 
     console.log(loginAttempt);
-    console.log(`old jwt: ${req.cookies.jwt}`);
 
     const uid = await getUid(req.body.username);
-
-    console.log(uid);
-    console.log(req.jwt.uid);
 
     //if they are a valid user and we haven't already, let's set a cookie so we can remember them
     //or if they have just logged in with a different user

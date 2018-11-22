@@ -7,6 +7,9 @@ export default class GameOver extends Component {
   constructor(props) {
     super(props);
     this.state = { loggedIn: false };
+    if (this.props.username) {
+      this.state = { loggedIn: true };
+    }
   }
 
   loggedIn(username) {
