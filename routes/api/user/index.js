@@ -60,6 +60,11 @@ router.post("/login", async (req, res) => {
 
 });
 
+router.get("/logout", (req, res) => {
+    res.clearCookie("jwt");
+    return res.redirect("/");
+});
+
 router.post("/register", async (req, res) => {
     //if the user already exists, don;'t try to re-register them
     const uid = await getUid(req.body.username);
