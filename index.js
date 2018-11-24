@@ -1,7 +1,3 @@
-const {
-    saveScore
-} = require("./login");
-
 const express = require("express");
 const app = express();
 
