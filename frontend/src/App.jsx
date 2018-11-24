@@ -20,6 +20,7 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
+    //find out if we've logged in in the past, if so, we don't need to login again
     const res = await fetch("/api/user/me").then(res => res.json());
     this.setState({
       response: true
@@ -40,7 +41,8 @@ export default class App extends Component {
   }
 
   loggedIn(username) {
-    console.log("loggedIn");
+    //if we just un render the Login component, the backdrop remains dim due to this backdrop div
+    //because it's not a child of the Login component, so we must un render it manually
     const backdrop = document.getElementsByClassName("modal-backdrop")[0];
     backdrop.parentElement.removeChild(backdrop);
     this.setState({ loggedIn: true, username: username });
@@ -54,7 +56,7 @@ export default class App extends Component {
     if (this.state.loggedIn) {
       return (
         <div className="App">
-          <div clasName="container">
+          <div className="container">
             <div className="row">
               <div className="col-md-4">
                 <Username username={this.state.username} />
@@ -74,13 +76,12 @@ export default class App extends Component {
         </div>
       );
     } else {
+      //if jwt isn't valid, we haven't remembered the user
+      //as such, we need them to log in before playing
       return (
         <div className="App">
           <div className="container">
-            <LoginButton
-              show={!this.state.loggedIn}
-              loggedIn={username => this.loggedIn(username)}
-            />
+            <LoginButton loggedIn={username => this.loggedIn(username)} />
           </div>
         </div>
       );

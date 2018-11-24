@@ -13,13 +13,12 @@ export default class extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.cards);
-    console.log(prevProps.cards);
     if (
       this.props.cards.local.color === "000000" ||
       prevProps.cards.local.color === "000000"
     ) {
-      console.log("cards are black, no winner");
+      //if the cards are black, it means the server has not given us a deck yet,
+      //so we shouldn't choose a winner
       return;
     }
     if (this.props.cards !== prevProps.cards) {
@@ -28,6 +27,8 @@ export default class extends Component {
   }
 
   getWinner(cards) {
+    //This is kinda like rock paper scissors, but if they're the same,
+    //we use their numbers rather than just calling it a draw
     let winner;
     if (cards.local.color !== cards.opponent.color) {
       if (cards.local.color === colors.red) {
@@ -53,7 +54,7 @@ export default class extends Component {
       winner = cards.local.number > cards.opponent.number ? "You" : "opponent";
     }
     this.props.handleScore(winner);
-
+    //tell our parent that we've chosen a winner, and let the Content component handle the scores
     return winner;
   }
 

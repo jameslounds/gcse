@@ -65,7 +65,7 @@ export default class Login extends Component {
           </div>
           <div className="modal-footer">
             <p className="text-justify">
-              Already made an account?{" "}
+              Need an account?{" "}
               <a onClick={() => this.props.changeMode()} href="#register">
                 Register
               </a>
@@ -99,7 +99,7 @@ export default class Login extends Component {
             data.reason = "password";
           }
 
-          //if there was a previous reason, do some checks
+          //if there was a previous reason, do the following checks
           if (this.state.reason !== "") {
             //if the reason we just got is the same as the old one, we don't need to change anything, so return
             if (data.reason === this.state.reason) {
@@ -118,8 +118,8 @@ export default class Login extends Component {
           const target = document.getElementById(data.reason);
           target.classList.add("is-invalid");
         } else {
-          this.props.loggedIn();
-          console.log("login successful");
+          //we have logged in successfully, pass the data up
+          this.props.loggedIn(username);
         }
       });
   }

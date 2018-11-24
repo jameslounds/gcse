@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Card from "./card/Card.jsx";
+import Card from "./Card.jsx";
 import Winner from "./Winner.jsx";
 import Results from "./Results.jsx";
 
@@ -8,6 +8,7 @@ export default class Game extends Component {
   constructor(props) {
     super(props);
     this.deck = {};
+    //we just show black cards until we get a deck from the server
     this.state = {
       cards: {
         local: { color: "000000" },
@@ -17,7 +18,8 @@ export default class Game extends Component {
   }
 
   async componentDidMount() {
-    this.deck = await this.getDeck(30);
+    const amount = 30;
+    this.deck = await this.getDeck(amount);
 
     this.setState({
       cards: {
@@ -33,6 +35,7 @@ export default class Game extends Component {
 
   redeal() {
     if (this.deck.length === 0) {
+      //if we have no cards left, game over
       this.gameOver();
       return;
     }
@@ -45,7 +48,6 @@ export default class Game extends Component {
   }
 
   gameOver() {
-    console.log("game over");
     this.props.gameOver();
   }
 
@@ -67,12 +69,6 @@ export default class Game extends Component {
             <button onClick={() => this.redeal()} className="btn align-bottom">
               Re-deal
             </button>
-            {/* <button
-              onClick={() => this.gameOver()}
-              className="btn align-bottom"
-            >
-              Finish
-            </button> */}
           </div>
           <div className="col-md-5">
             <Card

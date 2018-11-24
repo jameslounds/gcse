@@ -4,4 +4,4 @@ DONE Send the scores
 DONE Don't bother showing login modal if valid jwt present
 DONE Add logout button
 DONE Don't just leave loading gif up if no username recieved
-Change the order: one MUST login before being able to play
+DONE Change the order: one MUST login before being able to play

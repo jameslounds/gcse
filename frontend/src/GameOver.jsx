@@ -5,7 +5,7 @@ import Score from "./Score.jsx";
 export default function(props) {
   return (
     <div className="container" align="center">
-      <Score score={props.score} />
+      <Score scores={props.scores} />
     </div>
   );
 }

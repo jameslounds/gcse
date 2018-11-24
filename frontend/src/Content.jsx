@@ -18,7 +18,6 @@ export default class Content extends Component {
   handleScore(winner) {
     if (winner === "You") {
       this.setState({
-        cards: this.state.cards,
         scores: {
           local: this.state.scores.local + 1,
           opponent: this.state.scores.opponent
@@ -27,7 +26,6 @@ export default class Content extends Component {
     } else {
       if (winner === "opponent") {
         this.setState({
-          cards: this.state.cards,
           scores: {
             local: this.state.scores.local,
             opponent: this.state.scores.opponent + 1
@@ -38,7 +36,6 @@ export default class Content extends Component {
   }
 
   gameOver() {
-    console.log("game over");
     this.setState({
       gameOver: true
     });
@@ -46,7 +43,9 @@ export default class Content extends Component {
 
   render() {
     if (this.state.gameOver) {
-      return <GameOver username={this.props.username} />;
+      return (
+        <GameOver username={this.props.username} scores={this.state.scores} />
+      );
     } else {
       return (
         <Game

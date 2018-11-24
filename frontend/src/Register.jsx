@@ -133,7 +133,6 @@ export default class Login extends Component {
 
     if (username !== confirm) {
       // if the username is not the same as the confirm input, the user has made a mistake, we can't let them register
-      console.log("pas meme");
       return;
     }
 
@@ -152,16 +151,14 @@ export default class Login extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          this.props.loggedIn();
-          console.log("success!");
+          //if successful, send the data up
+          this.props.loggedIn(username);
         } else {
-          console.log("failure");
           this.setState({
             invalid: true,
             usernameInvalid: true
           });
         }
-        console.log(data);
       });
   }
 }

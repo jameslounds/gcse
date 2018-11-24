@@ -24,7 +24,7 @@ export default class LoginButton extends Component {
           {this.state.login ? (
             <Login
               changeMode={() => this.changeMode()}
-              loggedIn={() => this.props.loggedIn()}
+              loggedIn={username => this.props.loggedIn(username)}
             />
           ) : (
             <Register
