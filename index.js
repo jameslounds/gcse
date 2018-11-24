@@ -8,7 +8,7 @@ const app = express();
 const morgan = require("morgan");
 app.use(morgan("combined"));
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const hbs = require("hbs");
 app.set("view engine", "hbs");

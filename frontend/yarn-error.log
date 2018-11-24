@@ -30,7 +30,7 @@ npm manifest:
       "eject": "react-scripts eject",
       "deploy": "gh-pages -d build"
     },
-    "homepage": "https://cucumberbob123.github.io/gcse",
+    "homepage": "https://cucumberbob123.github.io/",
     "devDependencies": {
       "gh-pages": "^1.2.0"
     },
