@@ -34,7 +34,7 @@ app.use(
     })
 );
 
-app.use("/gcse", express.static("./frontend/build"));
+app.use("/", express.static("./frontend/build"));
 
 app.use("/api", require("./routes/api"));
 
