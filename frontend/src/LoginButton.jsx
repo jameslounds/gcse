@@ -13,13 +13,12 @@ export default class LoginButton extends Component {
     return (
       <div>
         <button
-          style={this.props.show ? { display: "block" } : { display: "none" }}
           type="button"
           className="btn btn-primary"
           data-toggle="modal"
           data-target="#login"
         >
-          Login To Save Your Score
+          You must login before playing
         </button>
         <div className="modal" id="login">
           {this.state.login ? (

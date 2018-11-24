@@ -13,6 +13,15 @@ export default class extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log(this.props.cards);
+    console.log(prevProps.cards);
+    if (
+      this.props.cards.local.color === "000000" ||
+      prevProps.cards.local.color === "000000"
+    ) {
+      console.log("cards are black, no winner");
+      return;
+    }
     if (this.props.cards !== prevProps.cards) {
       this.winner = this.getWinner(this.props.cards);
     }

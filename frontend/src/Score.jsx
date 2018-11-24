@@ -10,7 +10,7 @@ export default class Score extends Component {
     }
   }
   render() {
-    return <p>{this.state.score.local}</p>;
+    return <h2>Your Score: {this.state.score.local}</h2>;
   }
 
   componentDidMount() {
